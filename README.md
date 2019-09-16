@@ -22,3 +22,7 @@ A minimalistic Webpack 4 ES6 boilerplate project.
 * `yarn build` - create build in `dist` folder
 * `yarn eslint` - run an ESLint check
 * `yarn stylelint` - run an Stylelint check
+
+
+https://bl.ocks.org/mbostock/7555321
+# path.quadraticCurveTo(cpx, cpy, x, y)

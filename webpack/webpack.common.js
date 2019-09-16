@@ -5,7 +5,7 @@ const paths = require('./paths');
 module.exports = {
   context: paths.src,
   entry: {
-    app: `./scripts/index.js`,
+    app: `./scripts/index.ts`,
   },
   output: {
     filename: `scripts/[name].[hash:10].js`,
@@ -14,9 +14,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.(scss|css)$/,
@@ -71,6 +71,9 @@ module.exports = {
         },
       },
     ],
+  },
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ]
   },
   plugins: [
     new MiniCssExtractPlugin({
