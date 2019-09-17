@@ -25,4 +25,3 @@ A minimalistic Webpack 4 ES6 boilerplate project.
 
 
 https://bl.ocks.org/mbostock/7555321
-# path.quadraticCurveTo(cpx, cpy, x, y)

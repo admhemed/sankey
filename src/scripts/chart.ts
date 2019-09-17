@@ -5,7 +5,12 @@ export interface Line {
   width: number;
   line: number[][];
   id: number;
+  name: string;
+  subTitle: string;
   marker: boolean;
+  color: string;
+  nameColor: string;
+  subTitleColor: string;
 }
 
 export class Chart {
@@ -14,7 +19,20 @@ export class Chart {
   constructor(private model: Model, private width: number, private height: number) {
     this.lowerRectHeight = ~~(this.height * 50 / 100);
   }
-
+  public getRightPhrase = () => {
+    return {
+      text: this.model.getRightPhrase(),
+      x: this.width + this.width * 1/100,
+      y: this.height * 90/100
+    }
+  };
+  public getInnerRectTexts = (): any => {
+    return this.model.getInnerRectTexts().map((t, i) => ({
+      text: t,
+      x: this.width * ((i * 15) +30)/100,
+      y: this.height + this.height * 5/100
+    }));
+  };
   public getInnerRectPoints = (): number[][] => {
     const innerRectWidth = this.width * 40 / 100;
     const x1 = ~~((this.width - innerRectWidth) / 2);
@@ -111,7 +129,12 @@ export class Chart {
       line: [this.getLeftOuterTopPoint(), [this.getLeftOuterTopPoint()[0], leftInnerPoints[0][1]], leftInnerPoints[0]],
       width: this.model.getLeftEntitiesPercents()[0] * this.lowerRectHeight / 100,
       id: 1,
-      marker: false
+      name: this.model.getLeftEntityName(0),
+      subTitle: this.model.getLeftEntitySubTitle(0),
+      marker: false,
+      color: this.model.getLeftEntityColor(0),
+      nameColor: this.model.getLeftEntityNameColor(0),
+      subTitleColor: this.model.getLeftEntitySubTitleColor(0),
     }
   };
   private getLeftMiddleLine = (): Line => {
@@ -122,7 +145,12 @@ export class Chart {
         line: [this.getLeftOuterMiddlePoint(), [this.getLeftOuterMiddlePoint()[0] + this.getMiddleLineDiversion(), p[1]], p],
         width: this.model.getLeftEntitiesPercents()[1] * this.lowerRectHeight / 100,
         id: 2,
-        marker: false
+        name: this.model.getLeftEntityName(1),
+        subTitle: this.model.getLeftEntitySubTitle(1),
+        marker: false,
+        color: this.model.getLeftEntityColor(1),
+        nameColor: this.model.getLeftEntityNameColor(1),
+        subTitleColor: this.model.getLeftEntitySubTitleColor(1),
       }
     } else {
       return null;
@@ -130,11 +158,17 @@ export class Chart {
   };
   private getLeftBottomLine = (): Line => {
     const leftInnerPoints = this.getLeftInnerPoints();
+    const key = leftInnerPoints.length - 1;
     return {
       line: [this.getLeftOuterBottomPoint(), this.getLeftOuterBottomPoint(), leftInnerPoints[leftInnerPoints.length - 1]],
-      width: this.model.getLeftEntitiesPercents()[leftInnerPoints.length - 1] * this.lowerRectHeight / 100,
+      width: this.model.getLeftEntitiesPercents()[key] * this.lowerRectHeight / 100,
       id: 3,
-      marker: false
+      name: this.model.getLeftEntityName(key),
+      subTitle: this.model.getLeftEntitySubTitle(key),
+      marker: false,
+      color: this.model.getLeftEntityColor(key),
+      nameColor: this.model.getLeftEntityNameColor(key),
+      subTitleColor: this.model.getLeftEntitySubTitleColor(key),
     }
   };
   private getLeftTopLineInnerRect = (): Line => {
@@ -144,7 +178,12 @@ export class Chart {
       line: [p, p, [p[0] + this.getInnerRectBigLineWidth(), p[1]]],
       width: this.model.getLeftEntitiesPercents()[0] * this.lowerRectHeight / 100,
       id: 4,
-      marker: true
+      name: "",
+      subTitle: "",
+      marker: true,
+      color: this.model.getLeftEntityColor(0),
+      nameColor: this.model.getLeftEntityNameColor(0),
+      subTitleColor: this.model.getLeftEntitySubTitleColor(0),
     }
   };
   private getLeftMiddleLineInnerRect = (): Line => {
@@ -155,7 +194,12 @@ export class Chart {
         line: [p, p, [p[0] + this.getInnerRectBigLineWidth(), p[1]]],
         width: this.model.getLeftEntitiesPercents()[1] * this.lowerRectHeight / 100,
         id: 5,
-        marker: true
+        name: "",
+        subTitle: "",
+        marker: true,
+        color: this.model.getLeftEntityColor(1),
+        nameColor: this.model.getLeftEntityNameColor(1),
+        subTitleColor: this.model.getLeftEntitySubTitleColor(1),
       }
     } else {
       return null;
@@ -163,12 +207,18 @@ export class Chart {
   };
   private getLeftBottomLineInnerRect = (): Line => {
     const leftInnerPoints = this.getLeftInnerPoints();
-    const p = leftInnerPoints[leftInnerPoints.length - 1];
+    const key = leftInnerPoints.length - 1;
+    const p = leftInnerPoints[key];
     return {
       line: [p, p, [p[0] + this.getInnerRectBigLineWidth(), p[1]]],
-      width: this.model.getLeftEntitiesPercents()[leftInnerPoints.length - 1] * this.lowerRectHeight / 100,
+      width: this.model.getLeftEntitiesPercents()[key] * this.lowerRectHeight / 100,
       id: 6,
-      marker: true
+      name: "",
+      subTitle: "",
+      marker: true,
+      color: this.model.getLeftEntityColor(key),
+      nameColor: this.model.getLeftEntityNameColor(key),
+      subTitleColor: this.model.getLeftEntitySubTitleColor(key),
     }
   };
 
@@ -178,7 +228,12 @@ export class Chart {
       line: [rightInnerPoints[0], [this.getRightOuterTopPoint()[0], rightInnerPoints[0][1]], [this.getRightOuterTopPoint()[0], this.getRightOuterTopPoint()[1] + this.getMarkerWidth()]],
       width: this.model.getRightEntitiesPercents()[0] * this.lowerRectHeight / 100,
       id: 7,
-      marker: true
+      name: this.model.getRightEntityName(0),
+      subTitle: this.model.getRightEntitySubTitle(0),
+      marker: true,
+      color: this.model.getRightEntityColor(0),
+      nameColor: this.model.getRightEntityNameColor(0),
+      subTitleColor: this.model.getRightEntitySubTitleColor(0)
     }
   };
   private getRightMiddleLine = (): Line => {
@@ -188,8 +243,14 @@ export class Chart {
       return {
         line: [p, [this.width - this.getMiddleLineDiversion(), p[1]], p2],
         width: this.model.getRightEntitiesPercents()[1] * this.lowerRectHeight / 100,
+        name: this.model.getRightEntityName(1),
+        subTitle: this.model.getRightEntitySubTitle(1),
         id: 8,
-        marker: true
+        marker: true,
+        color: this.model.getRightEntityColor(1),
+        nameColor: this.model.getRightEntityNameColor(1),
+        subTitleColor: this.model.getRightEntitySubTitleColor(1)
+
       }
     } else {
       return null;
@@ -197,11 +258,17 @@ export class Chart {
   };
   private getRightBottomLine = (): Line => {
     const rightInnerPoints = this.getRightInnerPoints();
+    const key = rightInnerPoints.length - 1;
     return {
-      line: [rightInnerPoints[rightInnerPoints.length - 1], [this.getRightOuterBottomPoint()[0] - this.getMarkerWidth(), this.getRightOuterBottomPoint()[1]], [this.getRightOuterBottomPoint()[0] - this.getMarkerWidth(), this.getRightOuterBottomPoint()[1]]],
-      width: this.model.getRightEntitiesPercents()[rightInnerPoints.length - 1] * this.lowerRectHeight / 100,
+      line: [rightInnerPoints[key], [this.getRightOuterBottomPoint()[0] - this.getMarkerWidth(), this.getRightOuterBottomPoint()[1]], [this.getRightOuterBottomPoint()[0] - this.getMarkerWidth(), this.getRightOuterBottomPoint()[1]]],
+      width: this.model.getRightEntitiesPercents()[key] * this.lowerRectHeight / 100,
       id: 9,
-      marker: true
+      name: this.model.getRightEntityName(key),
+      subTitle: this.model.getRightEntitySubTitle(key),
+      marker: true,
+      color: this.model.getRightEntityColor(key),
+      nameColor: this.model.getRightEntityNameColor(key),
+      subTitleColor: this.model.getRightEntitySubTitleColor(key)
     }
   };
   private getRightTopLineInnerRect = (): Line => {
@@ -211,7 +278,12 @@ export class Chart {
       line: [[p[0] - this.getInnerRectBigLineWidth(), p[1]], p, p],
       width: this.model.getRightEntitiesPercents()[0] * this.lowerRectHeight / 100,
       id: 10,
-      marker: false
+      name: "",
+      subTitle: "",
+      marker: false,
+      color: this.model.getRightEntityColor(0),
+      nameColor: this.model.getRightEntityNameColor(0),
+      subTitleColor: this.model.getRightEntitySubTitleColor(0)
     }
   };
   private getRightMiddleLineInnerRect = (): Line => {
@@ -222,7 +294,12 @@ export class Chart {
         line: [[p[0] - this.getInnerRectBigLineWidth(), p[1]], p, p],
         width: this.model.getRightEntitiesPercents()[1] * this.lowerRectHeight / 100,
         id: 11,
-        marker: false
+        name: "",
+        subTitle: "",
+        marker: false,
+        color: this.model.getRightEntityColor(1),
+        nameColor: this.model.getRightEntityNameColor(1),
+        subTitleColor: this.model.getRightEntitySubTitleColor(1)
       }
     } else {
       return null;
@@ -230,12 +307,18 @@ export class Chart {
   };
   private getRightBottomLineInnerRect = (): Line => {
     const rightInnerPoints = this.getRightInnerPoints();
-    const p = rightInnerPoints[rightInnerPoints.length - 1];
+    const key = rightInnerPoints.length - 1;
+    const p = rightInnerPoints[key];
     return {
       line: [[p[0] - this.getInnerRectBigLineWidth(), p[1]], p, p],
-      width: this.model.getRightEntitiesPercents()[rightInnerPoints.length - 1] * this.lowerRectHeight / 100,
+      width: this.model.getRightEntitiesPercents()[key] * this.lowerRectHeight / 100,
       id: 12,
-      marker: false
+      name: "",
+      subTitle: "",
+      marker: false,
+      color: this.model.getRightEntityColor(key),
+      nameColor: this.model.getRightEntityNameColor(key),
+      subTitleColor: this.model.getRightEntitySubTitleColor(key)
     }
   };
 
@@ -270,11 +353,15 @@ export class Chart {
     source: { x: number, y: number };
     target: { x: number, y: number };
     percent: number;
+    color: string;
+    id: string;
   }> => {
     const init: Array<{
       source: { x: number, y: number };
       target: { x: number, y: number };
       percent: number;
+      color: string;
+      id: string;
     }> = [];
     const leftInnerPoints = this.getLeftInnerPoints();
     return leftInnerPoints.reduce((acc, p1, j) =>
@@ -285,7 +372,9 @@ export class Chart {
         return {
           source: {x: p1[0] + this.getInnerRectBigLineWidth() + this.getMarkerWidth() + 1, y: p1[1]},
           target: {x: p2[0] - this.getInnerRectBigLineWidth(), y: y2},
-          percent: this.model.getResultPercent(j, i)
+          percent: this.model.getResultPercent(j, i),
+          color: this.model.getLeftEntityDiagonalLinesColorColor(j),
+          id: i + '_' + j
         }
       })), init);
   }
