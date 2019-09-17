@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a7c96ae-273f-4ef0-99ae-d99d3400346f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/chart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/chart.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/data.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/data.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/data.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/draw.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/draw.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stylesheets/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/stylesheets/style.scss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -45,8 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/scripts/draw.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="715">
-              <caret line="180" column="37" selection-start-line="180" selection-start-column="37" selection-end-line="180" selection-end-column="37" />
+            <state relative-caret-position="605">
+              <caret line="92" column="18" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -242,12 +234,12 @@
       <option name="presentableId" value="Default" />
       <updated>1568191694630</updated>
       <workItem from="1568191695723" duration="21489000" />
-      <workItem from="1568370602297" duration="78412000" />
+      <workItem from="1568370602297" duration="79238000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99901000" />
+    <option name="totallyTimeSpent" value="100727000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -457,8 +449,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scripts/draw.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="715">
-          <caret line="180" column="37" selection-start-line="180" selection-start-column="37" selection-end-line="180" selection-end-column="37" />
+        <state relative-caret-position="605">
+          <caret line="92" column="18" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
