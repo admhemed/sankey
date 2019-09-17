@@ -90,7 +90,7 @@ export const draw = (element: HTMLElement) => {
   svg.selectAll('text.big-line-sub-title')
     .data(chart.getLines().filter(line => !!line.subTitle))
     .enter().append("text")
-    .attr("dy", 18)
+    .attr("dy", 20)
     .attr("dx", 0)
     .attr("class", "big-line-sub-title")
     .append("textPath")
