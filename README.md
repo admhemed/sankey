@@ -1,3 +1,5 @@
+https://admhemed.github.io/sankey/
+
 # Webpack ES6 boilerplate
 
 A minimalistic Webpack 4 ES6 boilerplate project.
@@ -24,4 +26,3 @@ A minimalistic Webpack 4 ES6 boilerplate project.
 * `yarn stylelint` - run an Stylelint check
 
 
-https://bl.ocks.org/mbostock/7555321
